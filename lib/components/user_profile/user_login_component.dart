@@ -141,11 +141,11 @@ class UserLoginComponent extends StatelessWidget {
             providers: [
               ProvidersTypes.google,
               ProvidersTypes.facebook,
-              ProvidersTypes.apple,
+              // ProvidersTypes.apple,
             ],
             passwordCheck: false,
             bottomPadding: 16,
-            appleSignIn: true,
+            // appleSignIn: true,
           ),
         ),
       ],

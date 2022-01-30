@@ -55,7 +55,10 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("debug.keystore")
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
         }
         release {
             keyAlias keystoreProperties['keyAlias']

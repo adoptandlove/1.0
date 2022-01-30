@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_advanced_networkimage/zoomable.dart';
+// import 'package:flutter_advanced_networkimage/zoomable.dart';
+import 'package:pinch_zoom/pinch_zoom.dart';
 import 'package:getpet/widgets/getpet_network_image.dart';
 
 class FullScreenImageScreenArguments {
@@ -68,13 +69,8 @@ class _FullScreenImageScreenState extends State<FullScreenImageScreen> {
             ? AlwaysScrollableScrollPhysics()
             : NeverScrollableScrollPhysics(),
         itemBuilder: (context, position) {
-          return ZoomableWidget(
-            minScale: 1,
+          return PinchZoom(
             maxScale: 3,
-            zoomSteps: 1,
-            onZoomChanged: (zoom) => setState(() {
-              this.zoom = zoom;
-            }),
             child: Container(
               child: GetPetNetworkImage(
                 url: photos[position],
