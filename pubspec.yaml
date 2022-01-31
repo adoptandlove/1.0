@@ -37,7 +37,7 @@ dependencies:
   dio_firebase_performance: ^0.1.0
 
   device_info: ^0.4.2+4
-  firebase_ui: 1.0.8
+  firebase_ui: 0.3.2	
   pinch_zoom: ^1.0.0
 
 dependency_overrides:
