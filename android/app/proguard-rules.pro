@@ -4,7 +4,7 @@
 -optimizations !code/allocation/variable
 -keepattributes *Annotation*
 
--keep class lt.getpet.getpet.** { *; }
+-keep class hu.anl.adoptandlove.** { *; }
 
 # Flutter Wrapper
 -keep class io.flutter.app.** { *; }

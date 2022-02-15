@@ -28,7 +28,7 @@ class UserProfileComponent extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            user.displayName ?? user.email,
+            user.displayName ?? user.email ?? user.phoneNumber,
             style: TextStyle(
               fontSize: 30,
               color: Colors.white,

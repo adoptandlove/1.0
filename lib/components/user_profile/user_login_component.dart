@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_ui/login_view.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_ui/flutter_firebase_ui.dart';
 import 'package:getpet/authentication/authentication_manager.dart';
 import 'package:getpet/components/user_profile/user_profile_component.dart';
 import 'package:getpet/localization/app_localization.dart';
 import 'package:getpet/routes.dart';
 import 'package:getpet/widgets/conditions_rich_text.dart';
+import 'package:firebase_auth_ui/firebase_auth_ui.dart' as AUTHUI;
+import 'package:firebase_auth_ui/providers.dart';
 
 class UserLoginFullscreenComponent extends StatelessWidget {
   final bool popOnLoginIn;
@@ -136,18 +136,19 @@ class UserLoginComponent extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: LoginView(
-            providers: [
-              ProvidersTypes.google,
-              ProvidersTypes.facebook,
-              // ProvidersTypes.apple,
-            ],
-            passwordCheck: false,
-            bottomPadding: 16,
-            // appleSignIn: true,
-          ),
-        ),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: RaisedButton(
+              child: Text("Login"),
+              onPressed: () {
+                AUTHUI.FirebaseAuthUi.instance().launchAuth(
+                  [
+                    AuthProvider.email(), // Login with Email
+                    AuthProvider.facebook(), // Login with Facebook
+                    AuthProvider.phone(), // Login with Phone number
+                  ],
+                );
+              },
+            )),
       ],
     );
   }

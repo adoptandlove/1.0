@@ -45,7 +45,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "lt.getpet.getpet"
+        applicationId "hu.anl.adoptandlove"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
@@ -70,7 +70,7 @@ android {
 
     buildTypes {
         debug {
-            applicationIdSuffix '.debug'
+            applicationIdSuffix ''
         }
         release {
             signingConfig signingConfigs.release

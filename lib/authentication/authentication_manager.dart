@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_ui/flutter_firebase_ui.dart';
 import 'package:getpet/preferences/app_preferences.dart';
 
 class AuthenticationManager {
@@ -47,7 +46,6 @@ class AuthenticationManager {
   }
 
   Future logout() async {
-    await signOutProviders();
     await _appPreferences.removeApiToken();
   }
 }
