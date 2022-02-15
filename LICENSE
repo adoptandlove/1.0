@@ -186,7 +186,11 @@
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
+<<<<<<< HEAD
    Copyright 2019 GetPet
+=======
+   Copyright [yyyy] [name of copyright owner]
+>>>>>>> 94030f6484afa02611fdc38fe18f6681add5d444
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
