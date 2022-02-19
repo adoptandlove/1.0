@@ -7,8 +7,7 @@ import 'package:getpet/components/user_profile/user_profile_component.dart';
 import 'package:getpet/localization/app_localization.dart';
 import 'package:getpet/routes.dart';
 import 'package:getpet/widgets/conditions_rich_text.dart';
-import 'package:firebase_auth_ui/firebase_auth_ui.dart' as AUTHUI;
-import 'package:firebase_auth_ui/providers.dart';
+import 'package:flutterfire_ui/auth.dart';
 
 class UserLoginFullscreenComponent extends StatelessWidget {
   final bool popOnLoginIn;
@@ -42,9 +41,9 @@ class _UserLoginOrProfileComponentState
     extends State<UserLoginOrProfileComponent> {
   final _authenticationManager = AuthenticationManager();
 
-  StreamSubscription<FirebaseUser> _listener;
+  StreamSubscription<User> _listener;
 
-  FirebaseUser _currentUser;
+  User _currentUser;
 
   @override
   void initState() {
@@ -100,7 +99,7 @@ class _UserLoginOrProfileComponentState
     _currentUser = await _authenticationManager.getCurrentUser();
     setState(() {});
 
-    _listener = _authenticationManager.listenForUser((FirebaseUser user) {
+    _listener = _authenticationManager.listenForUser((User user) {
       if (_listener != null) {
         if (user != null && widget.popOnLoginIn) {
           Navigator.pop(context, true);
@@ -140,16 +139,23 @@ class UserLoginComponent extends StatelessWidget {
             child: RaisedButton(
               child: Text("Login"),
               onPressed: () {
-                AUTHUI.FirebaseAuthUi.instance().launchAuth(
-                  [
-                    AuthProvider.email(), // Login with Email
-                    AuthProvider.facebook(), // Login with Facebook
-                    AuthProvider.phone(), // Login with Phone number
-                  ],
-                );
+                Navigator.pushNamed(context, Routes.ROUTE_LOGIN);
               },
             )),
       ],
     );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SignInScreen(providerConfigs: [
+      EmailProviderConfiguration(),
+      PhoneProviderConfiguration(),
+      FacebookProviderConfiguration(clientId: '')
+    ]);
   }
 }

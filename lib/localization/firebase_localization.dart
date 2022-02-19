@@ -1,46 +1,8 @@
-import 'dart:ui';
+import 'package:flutterfire_ui/i10n.dart';
 
-import 'package:firebase_ui/l10n/localization.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-class FirebaseLocalization extends FFULocalizations {
-  FirebaseLocalization(Locale locale) : super(locale);
+class FirebaseLabelOverrides extends DefaultLocalizations {
+  const FirebaseLabelOverrides();
 
   @override
-  String get signInFacebook => "Prisijungti su Facebook";
-
-  @override
-  String get signInGoogle => "Prisijungti su Google";
-
-  static const LocalizationsDelegate<FFULocalizations> delegate =
-      const _FirebaseLocalizationDelegate();
-
-  static Future<FirebaseLocalization> load(Locale locale) {
-    return new SynchronousFuture<FirebaseLocalization>(
-        new FirebaseLocalization(locale));
-  }
-}
-
-class _FirebaseLocalizationDelegate
-    extends LocalizationsDelegate<FFULocalizations> {
-  const _FirebaseLocalizationDelegate();
-
-  static const List<String> _supportedLanguages = const <String>[
-    'en', // English
-    'fr', // French
-    'de', // Deutsch
-    'pt', // Portuguese
-  ];
-
-  @override
-  bool isSupported(Locale locale) =>
-      _supportedLanguages.contains(locale.languageCode);
-
-  @override
-  Future<FFULocalizations> load(Locale locale) =>
-      FirebaseLocalization.load(locale);
-
-  @override
-  bool shouldReload(_FirebaseLocalizationDelegate old) => false;
+  String get signInWithFacebookButtonText => 'Prisijungti su Facebook';
 }

@@ -1,9 +1,8 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:getpet/pets.dart';
 
 class Analytics {
-  static final FirebaseAnalytics analytics = FirebaseAnalytics();
+  static final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   static final FirebaseAnalyticsObserver firebaseObserver =
       FirebaseAnalyticsObserver(analytics: analytics);
 

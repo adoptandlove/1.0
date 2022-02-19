@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:getpet/components/app/app_component.dart';
@@ -9,7 +10,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 Future<Null> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  FlutterError.onError = Crashlytics.instance.recordFlutterError;
+  await Firebase.initializeApp();
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
 
   runZonedGuarded<Future<void>>(() async {
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -17,6 +19,6 @@ Future<Null> main() async {
 
     runApp(new AppComponent());
   }, (Object error, StackTrace stack) {
-    Crashlytics.instance.recordError(error, stack);
+    FirebaseCrashlytics.instance.recordError(error, stack);
   });
 }

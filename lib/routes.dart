@@ -20,6 +20,7 @@ class Routes {
   static const ROUTE_USER_LOGIN_FULLSCREEN = "user_login_fullscreen_screen";
 
   static const ROUTE_PREFERENCES = "preferences_screen";
+  static const ROUTE_LOGIN = "login";
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -62,6 +63,10 @@ class Routes {
       case ROUTE_PREFERENCES:
         return MaterialPageRoute(builder: (context) {
           return PreferencesComponent();
+        });
+      case ROUTE_LOGIN:
+        return MaterialPageRoute(builder: (context) {
+          return LoginPage();
         });
       default:
         throw Exception("Unable to find route ${settings.name} in routes");

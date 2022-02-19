@@ -10,6 +10,7 @@ class AppLocalizations {
   final Locale locale;
 
   static AppLocalizations of(BuildContext context) {
+    print("App locale ${Localizations.localeOf(context)}");
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 

@@ -21,31 +21,29 @@ class AuthenticationManager {
     return (await getCurrentUser()) != null;
   }
 
-  Future<FirebaseUser> getCurrentUser() async {
-    return await _auth.currentUser();
+  Future<User> getCurrentUser() async {
+    return _auth.currentUser;
   }
 
   Future<String> getIdToken() async {
     final currentUser = await getCurrentUser();
-    final idTokenResult = await currentUser?.getIdToken(refresh: true);
+    final idTokenResult = await currentUser?.getIdToken(true);
 
-    return idTokenResult.token;
+    return idTokenResult;
   }
 
-  StreamSubscription<FirebaseUser> listenForUser(
-      void onData(FirebaseUser firebaseUser),
-      {Function onError,
-      void onDone(),
-      bool cancelOnError}) {
-    return _auth.onAuthStateChanged.listen(
-      onData,
-      onError: onError,
-      onDone: onDone,
-      cancelOnError: cancelOnError,
-    );
+  StreamSubscription<User> listenForUser(void onData(User firebaseUser),
+      {Function onError, void onDone(), bool cancelOnError}) {
+    return _auth.authStateChanges().listen(
+          onData,
+          onError: onError,
+          onDone: onDone,
+          cancelOnError: cancelOnError,
+        );
   }
 
   Future logout() async {
+    await FirebaseAuth.instance.signOut();
     await _appPreferences.removeApiToken();
   }
 }

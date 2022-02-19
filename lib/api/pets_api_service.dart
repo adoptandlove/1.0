@@ -1,4 +1,4 @@
-import 'package:dio_firebase_performance/dio_firebase_performance.dart';
+import 'package:getpet/analytics/dio_firebase_performance.dart';
 import 'package:getpet/authentication/authentication_manager.dart';
 import 'package:getpet/pets.dart';
 import 'package:getpet/preferences/app_preferences.dart';
@@ -25,8 +25,8 @@ class PetsApiService {
   final _authenticationManager = AuthenticationManager();
 
   PetsApiService._internal() {
-    dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
+    dio.interceptors.add(
+        InterceptorsWrapper(onRequest: (RequestOptions options, handler) async {
       final apiToken = await _appPreferences.getApiToken();
 
       if (apiToken != null) {
@@ -48,13 +48,13 @@ class PetsApiService {
         }
       }
 
-      return options;
-    }, onResponse: (Response response) {
+      return handler.next(options);
+    }, onResponse: (Response response, handler) {
       // Do something with response data
-      return response; // continue
-    }, onError: (DioError e) {
+      return handler.next(response); // continue
+    }, onError: (DioError e, handler) {
       // Do something with response error
-      return e; //continue
+      return handler.next(e); //continue
     }));
 
     dio.interceptors.add(DioFirebasePerformanceInterceptor());

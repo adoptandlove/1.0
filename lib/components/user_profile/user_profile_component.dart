@@ -6,7 +6,7 @@ import 'package:getpet/localization/app_localization.dart';
 import 'package:getpet/widgets/getpet_network_image.dart';
 
 class UserProfileComponent extends StatelessWidget {
-  final FirebaseUser user;
+  final User user;
 
   UserProfileComponent({this.user});
 
@@ -65,8 +65,8 @@ class UserProfileComponent extends StatelessWidget {
   Widget getUserProfilePhotoProvider() {
     final anonymousAssetImagePath = "assets/anonymous_avatar.jpg";
 
-    if (user.photoUrl != null) {
-      var photoUrl = user.photoUrl.replaceFirst("/s96-c/", "/s300-c/");
+    if (user.photoURL != null) {
+      var photoUrl = user.photoURL.replaceFirst("/s96-c/", "/s300-c/");
       photoUrl += "?height=300";
 
       return GetPetNetworkImage(

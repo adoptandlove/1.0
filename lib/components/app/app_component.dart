@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/i10n.dart';
 import 'package:getpet/analytics/analytics.dart';
 import 'package:getpet/localization/app_localization.dart';
 import 'package:getpet/localization/firebase_localization.dart';
 import 'package:getpet/repositories/pets_db_repository.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:getpet/routes.dart';
 import 'package:getpet/preferences/app_preferences.dart';
 
@@ -42,7 +42,8 @@ class _AppComponentState extends State<AppComponent> {
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
-        FirebaseLocalization.delegate,
+        FlutterFireUILocalizations.withDefaultOverrides(
+            FirebaseLabelOverrides()),
         AppLocalizations.delegate
       ],
       supportedLocales: [
