@@ -14,9 +14,9 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <application
-        android:name="io.flutter.app.FlutterApplication"
-        android:label="GetPet"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:name="${applicationName}"
+        android:label="Adobt and love"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name="io.flutter.embedding.android.FlutterActivity"

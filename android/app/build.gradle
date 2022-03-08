@@ -37,7 +37,7 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
 
 
     lintOptions {
@@ -46,8 +46,8 @@ android {
 
     defaultConfig {
         applicationId "hu.anl.adoptandlove"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion 25
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
